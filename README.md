@@ -12,3 +12,4 @@
 
 ## References & Links
 - [Python docs](https://docs.python.org/3/)
+- [Game Rolling the Dice - Python for beginners](https://www.pythonforbeginners.com/code-snippets-source-code/game-rolling-the-dice)
