@@ -61,8 +61,8 @@ class GameLogic():
         keys = list(occurrences.keys())
         if len(keys) == 3:
             if (occurrences[keys[0]] == 2) and (occurrences[keys[1]] == 2) and (occurrences[keys[2]] == 2):
-            counter += scoresheet['special']['three pair']
-            return counter
+                counter += scoresheet['special']['three pair']
+                return counter
 
         # then check for regular scores
         # (2,2)
