@@ -2,6 +2,24 @@ import re, random, collections
 
 class GameLogic():
 
+    # occurrences = {
+    #     2:2,
+    #     3:2,
+    #     4:2
+    # }
+
+    # print(occurrences)
+
+    # num_keys = len(occurrences)
+
+    # print(num_keys)
+
+    # if num_keys == 3:
+    #     values_list = list(occurrences.values())
+
+    #     if values_list[0] == 2 and values_list[1] == 2 and values_list[2] == 2:
+    #         print("good so far")
+
     @staticmethod
     def roll_dice(num_of_dice): # static method
         values = []
