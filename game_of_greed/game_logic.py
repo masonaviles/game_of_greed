@@ -1,5 +1,15 @@
 import re, random, collections
 
+scoresheet = {
+  '1': {'1': 100, '2': 200, '3': 1000, '4': 2000, '5': 3000, '6': 4000},
+  '2': {'1': 0, '2': 0, '3': 200, '4': 400, '5': 600, '6': 800},
+  '3': {'1': 0, '2': 0, '3': 300, '4': 600, '5': 900, '6': 1200},
+  '4': {'1': 0, '2': 0, '3': 400, '4': 800,'5': 1200, '6': 1600},
+  '5': {'1': 50, '2': 100, '3': 500, '4': 1000,'5': 1500, '6': 2000},
+  '6': {'1': 0, '2': 0, '3': 600, '4': 1200,'5': 1800, '6': 2400},
+  'special': {'straight': 1500, 'three pair': 1500}
+}
+
 class GameLogic():
 
     # occurrences = {
@@ -28,50 +38,42 @@ class GameLogic():
         return tuple(values)
 
     @staticmethod
-    def calculate_score(tuple_of_dice_roll): # static method
-        score = 0
-        dice_roll = tuple_of_dice_roll
-        # A Counter is a container that keeps track of how many times equivalent values are added.
-        # most_common(): Return a list of the n most common elements and their counts from the most common to the least. If n is omitted or None, returns all elements in the counter.
-        counter = collections.Counter(tuple_of_dice_roll).most_common()
+    def calculate_score(dice): # (2,2)
+        counter = 0
+        occurrences = {} # { '2' : 2 }
+        for num in dice: # (2,2)
+            times_rolled = dice.count(num) # -> in dice (2,2) how many times does num(2) appear in the tuple dice (2,2) -> 2
+            occurrences[num] = times_rolled # times_rolled = 2
 
-        # Empty
-        if len(dice_roll) == 0:
-            score += 0
-            return score
+        # first, check for special cases
+        # straights
+        if sorted(dice) == [1,2,3,4,5,6]:
+            counter += scoresheet['special']['straight']
+            return counter
 
-        # straights: 6 of the same number
-        if len(counter) == 6:
-            score += 1500
-            return score
+        # (3, 3, 4, 4, 5, 5)
+        # keys = (3, 4, 5)
+        # occurences = {
+            # '3' : 2,
+            # '4' : 2,
+            # '5' : 2
+        # }
+        keys = list(occurrences.keys())
+        if len(keys) == 3:
+            if (occurrences[keys[0]] == 2) and (occurrences[keys[1]] == 2) and (occurrences[keys[2]] == 2):
+            counter += scoresheet['special']['three pair']
+            return counter
 
-        # pairs, only (1,1) and (5,5) are scoring
-        if len(counter) == 2:
-            if dice_roll == (1,1):
-                score += 200
-                return score
-            
-            if dice_roll == (5,5):
-                score += 100
-                return score
-            
-            else:
-                score += 0
-                return score
+        # then check for regular scores
+        # (2,2)
+        # occurances = { '2' : 2 }
+        for num in occurrences:
+            # counter += scoresheet['2']['2']
+            counter += scoresheet[str(num)][str(occurrences[num])]
 
-        # singles, only 1 and 5 are scoring
-        if len(counter) == 1:
-            if dice_roll == (1,):
-                score += 100
-                return score
-            
-            if dice_roll == (5,):
-                score += 50
-                return score
-            
-            else:
-                score += 0
-                return score
+        # for every iteration above 3, 100 * the number is added to the amount
+        # might try and do this implimentation for stretch goal
+        return counter
         
 
 
