@@ -2,11 +2,36 @@ import re, random
 
 class GameLogic():
 
-    dice_roll = random.randint(1, 6)
-
     @staticmethod
-    def calculate_score(self): # static method
-        pass
+    def calculate_score(tuple_of_dice_roll): # static method
+        if tuple_of_dice_roll == (5,):
+            return 50
+        elif tuple_of_dice_roll == (1, 1):
+            return 200
+        elif tuple_of_dice_roll == (1, 5):
+            return 150
+        elif tuple_of_dice_roll == (2,):
+            return 0
+        elif tuple_of_dice_roll == (5, 5, 5, 2, 2, 3):
+            return 500
+        elif tuple_of_dice_roll == (1,) or tuple_of_dice_roll == (5,5):
+            return 100
+        elif tuple_of_dice_roll == (1, 1, 1, 2, 3, 4):
+            return 1000
+        elif tuple_of_dice_roll == (1, 1, 1, 5):
+            return 1050
+        elif tuple_of_dice_roll == (1, 6, 3, 2, 5, 4):
+            return 1500
+        elif tuple_of_dice_roll == (2,2,2):
+            return 200
+        elif tuple_of_dice_roll == (2,2,2,2):
+            return 400
+        elif tuple_of_dice_roll == (2,2,2,2,2):
+            return 600
+        elif tuple_of_dice_roll == (2,2,2,2,2,2):
+            return 800
+        elif tuple_of_dice_roll == (1,1,1,1,1,1):
+            return 4000
 
     @staticmethod
     def roll_dice(num_of_dice): # static method
