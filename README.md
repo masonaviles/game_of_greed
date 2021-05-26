@@ -14,6 +14,15 @@
 
 #### Feature Tasks
 
+1. Application should implement all features from previous version
+2. Application should simulate rolling between 1 and 6 dice
+3. Application should allow user to set aside dice each roll
+4. Application should allow “banking” current score or rolling again.
+5. Application should keep track of total score
+6. Application should keep track of current round
+7. Application should have automated tests to ensure proper operation
+
+
 
 #### Documentation
 
