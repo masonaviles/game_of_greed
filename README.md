@@ -2,6 +2,8 @@
 
 ## Summary Lab 6
 
+[Lab 6 GitHub](https://github.com/masonaviles/game_of_greed/pull/3)
+
 - Today you’ll begin working in teams on a command line version of the dice game Game of Greed by expanding your understanding of Python standard library.
 
 #### References & Links
