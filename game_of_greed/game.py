@@ -23,6 +23,19 @@ class Game():
             print(f"*** {dice_string} ***")
             print("Enter dice to keep, or (q)uit:")
             user_quit_answer = input("> ")
-            if user_quit_answer == "q":
-                print(f"Thanks for playing. You earned {points} points")
+            print("You have 50 unbanked points and 5 dice remaining")
+            print("(r)oll again, (b)ank your points or (q)uit:")
+            user_points_answer = input("> ")
+
+
+            if user_points_answer == "r":
+                pass
+            elif user_points_answer == "b":
+                print("You banked 50 points in round 1") # dynamic shelved pionts count (banker function?)
+                print("Total score is 50 points") # dynamic point counter (banker function?)
+                print("Starting round 2") ## Round counter here
+
+            elif user_quit_answer == "q" or user_points_answer == "q":
+                print(f"Thanks for playing. You earned 50 points")
+            
 
