@@ -4,13 +4,13 @@ from game_of_greed.game import Game
 
 pytestmark = [pytest.mark.version_2]
 
-# @pytest.mark.skip()
+@pytest.mark.skip()
 def test_quitter():
     game = Game()
     diffs = diff(game.play, path="tests/version_2/quitter.sim.txt")
     assert not diffs, diffs
 
-# @pytest.mark.skip()
+@pytest.mark.skip()
 def test_one_and_done():
     game = Game()
     diffs = diff(game.play, path="tests/version_2/one_and_done.sim.txt")
