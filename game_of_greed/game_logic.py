@@ -99,4 +99,3 @@ class Banker():
     def clear_shelf(): # instance method
         self.shelved = 0
 
-    

@@ -148,9 +148,10 @@ def test_six_ones():
     expected = 4000
     assert actual == expected
 
+
 def test_three_pairs():
     actual = GameLogic.calculate_score((2,2,3,3,6,6))
-    expected = 4000
+    expected = 1500 ## LOOK HERE DUMMY
     assert actual == expected
 
 
