@@ -12,6 +12,8 @@
 
 ## Summary Lab 7
 
+[Lab 7 GitHub](https://github.com/masonaviles/game_of_greed/pull/3)
+
 #### Feature Tasks
 
 1. Application should implement all features from previous version
@@ -22,7 +24,4 @@
 6. Application should keep track of current round
 7. Application should have automated tests to ensure proper operation
 
-
-
-#### Documentation
 
