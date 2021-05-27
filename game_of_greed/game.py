@@ -30,6 +30,10 @@ class Game():
     def start_round(self, round):
         pass
 
+
+
+
+
     def start_game(self):
         self.round = 1
         while self.round <= self.num_of_rounds:
@@ -87,10 +91,22 @@ class Game():
             print(f"Thanks for playing. You earned {self.banker.banked} points")
 
     # quit function
-        if user_rbq_answer == "q" or user_points_answer == "q":
-            print(f"Thanks for playing. You earned {self.banker.banked} points")
+        # if user_rbq_answer == "q" or user_points_answer == "q":
+            # print(f"Thanks for playing. You earned {self.banker.banked} points")
+
+
             
             
         else:
             # print("Enter valid character")
             user_points_answer = input("> ") 
+
+
+    # def quit_game_function():
+    #     if user_rbq_answer == "q" or user_points_answer == "q":
+    #     print(f"Thanks for playing. You earned {self.banker.banked} points")
+    #     break
+    #     start_game()
+    # # Thought process is I need to restart the game right here after the user exits?
+
+        
