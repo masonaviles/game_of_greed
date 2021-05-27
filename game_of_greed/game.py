@@ -102,11 +102,11 @@ class Game():
             user_points_answer = input("> ") 
 
 
-    # def quit_game_function():
-    #     if user_rbq_answer == "q" or user_points_answer == "q":
-    #     print(f"Thanks for playing. You earned {self.banker.banked} points")
-    #     break
-    #     start_game()
-    # # Thought process is I need to restart the game right here after the user exits?
+    def quit_game_function():
+        if user_rbq_answer == "q" or user_points_answer == "q":
+        print(f"Thanks for playing. You earned {self.banker.banked} points")
+        break
+        start_game()
+    # Thought process is I need to restart the game right here after the user exits?
 
         
