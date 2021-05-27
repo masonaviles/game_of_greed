@@ -83,19 +83,15 @@ class Banker():
         self.banked = 0
         self.shelved = 0
         
-
     def shelf(self, num): # input of shelf is an integer and is the amount of points to add to self.shelf. Should temp. store unbanked points
         self.shelved += num
-
 
     def bank(self): # instance method
         temp_total = self.shelved
         self.banked += temp_total
         self.shelved = 0
         return temp_total
-        
 
-
-    def clear_shelf(): # instance method
+    def clear_shelf(self): # instance method
         self.shelved = 0
 
