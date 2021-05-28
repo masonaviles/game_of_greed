@@ -25,11 +25,12 @@ class Game():
     def start_game(self):
         num_of_dice = 6
         # self.round_num = 1
-        # self.round_num += 1
+        self.round_num += 1
         while self.round_num <= self.num_of_rounds:
             # self.round_num += 1
             self.start_round()
-            # print(f"Thanks for playing. You earned {self.banker.banked} points")
+            self.round_num += 1
+        print(f"Thanks for playing. You earned {self.banker.banked} points")
         self.end_game()
 
     def end_game(self):
@@ -60,13 +61,11 @@ class Game():
         users_keepers_list = [int(num) for num in users_keepers if num.isdigit()]
         return users_keepers_list
 
-
     # start_round(num_of_dice=(int))
     def start_round(self, num_of_dice=6):
-        self.round_num += 1
         print(f"Starting round {self.round_num}")
-        
-        while True:
+        playing = True
+        while playing and num_of_dice > 0:
             self.roll_dice(num_of_dice) # -> return dice
             # how are we gonna handle keepers
             print("Enter dice to keep, or (q)uit:")
@@ -75,15 +74,11 @@ class Game():
             if user_response == "q":
                 self.end_game()
 
-            # this is for keeping dice
-            # 5 5 1 2 3 4
-            # ex-> > 551
-            # -> take the length of user imput and subtract that from number of dice -> remain dice
             if user_response.isnumeric():
-                #use calculate score in GameLogic(). this function ist expecting dice
                 dice_values = tuple(int(char) for char in user_response)
                 score = GameLogic.calculate_score(dice_values)
                 self.banker.shelf(score)
+
                 num_of_dice -= len(user_response)
                 print(f"You have {self.banker.shelved} unbanked points and {num_of_dice} dice remaining")
                 print("(r)oll again, (b)ank your points or (q)uit:") 
@@ -91,15 +86,7 @@ class Game():
 
             # bank
             if user_response == "b":
-                # add to next round when after while
-
-                # dice_values = tuple(int(char) for char in user_response)
-                # score = GameLogic.calculate_score(dice_values)
-                # self.banker.shelf(score)
-                # num_of_dice -= len(user_response)
-
-                #self.round_num += 1
-
+                playing = False
                 print(f"You banked {self.banker.bank()} points in round {self.round_num}")
                 print(f"Total score is {self.banker.banked} points")
                 break
@@ -107,4 +94,7 @@ class Game():
 
             if user_response == "q":
                 self.end_game()
+
+            if user_response == "r":
+                continue
 
