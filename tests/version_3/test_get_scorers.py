@@ -3,7 +3,7 @@ from game_of_greed.game_logic import GameLogic
 
 pytestmark = [pytest.mark.version_3]
 
-
+# @pytest.mark.skip()
 @pytest.mark.parametrize(
     "test_input,expected",
     [
@@ -16,6 +16,8 @@ pytestmark = [pytest.mark.version_3]
         ((2, 3, 4), tuple()),
     ],
 )
+
+# @pytest.mark.skip()
 def test_get_scorers(test_input, expected):
     actual = GameLogic.get_scorers(test_input)
     assert sorted(actual) == sorted(expected)
