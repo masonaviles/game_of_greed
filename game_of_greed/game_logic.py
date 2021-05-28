@@ -1,4 +1,5 @@
-import re, random, collections
+import re, random
+from collections import Counter
 
 scoresheet = {
   '1': {'1': 100, '2': 200, '3': 1000, '4': 2000, '5': 3000, '6': 4000},
@@ -74,6 +75,12 @@ class GameLogic():
         # for every iteration above 3, 100 * the number is added to the amount
         # might try and do this implimentation for stretch goal
         return counter
+
+    @staticmethod
+    def validate_keepers(roll, keepers):
+        roll_counter = Counter(roll)
+        keepers_counter = Counter(keepers)
+        return roll_counter - keepers_counter
         
 
 
