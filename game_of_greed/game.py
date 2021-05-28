@@ -82,10 +82,13 @@ class Game():
             if user_response.isnumeric():
                 #use calculate score in GameLogic(). this function ist expecting dice
                 dice_values = tuple(int(char) for char in user_response)
+
+                remaining_dice = 6 - len(dice_values)
+
                 score = GameLogic.calculate_score(dice_values)
                 self.banker.shelf(score)
                 # num_of_dice -= len(user_response)
-                print(f"You have {self.banker.shelved} unbanked points and 2 dice remaining")
+                print(f"You have {self.banker.shelved} unbanked points and {remaining_dice} dice remaining")
                 print("(r)oll again, (b)ank your points or (q)uit:") 
                 user_response = input("> ")
 
