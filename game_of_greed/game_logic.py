@@ -78,16 +78,18 @@ class GameLogic():
 
     @staticmethod
     def validate_keepers(roll, keepers):
-        roll_counter = Counter(roll)
-        keepers_counter = Counter(keepers)
-        return roll_counter - keepers_counter
+        for num in keepers:
+            if str(num).isnumeric():
+                if keepers.count(num) > roll.count(int(num)):
+                    return False
+        return True
         
 
 
 class Banker():
 
     def __init__(self):
-        self.banked = 0
+        self.banked = 0 # total
         self.shelved = 0
         
     def shelf(self, num): # input of shelf is an integer and is the amount of points to add to self.shelf. Should temp. store unbanked points
