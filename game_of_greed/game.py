@@ -61,13 +61,12 @@ class Game():
         users_keepers_list = [int(num) for num in users_keepers if num.isdigit()]
         return users_keepers_list
 
-    # start_round(num_of_dice=(int))
+
     def start_round(self, num_of_dice=6):
         print(f"Starting round {self.round_num}")
         playing = True
         while playing and num_of_dice > 0:
-            self.roll_dice(num_of_dice) # -> return dice
-            # how are we gonna handle keepers
+            self.roll_dice(num_of_dice)
             print("Enter dice to keep, or (q)uit:")
             user_response = input("> ")
 
@@ -97,4 +96,6 @@ class Game():
 
             if user_response == "r":
                 continue
+
+        # self.start_round()
 

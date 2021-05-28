@@ -13,24 +13,6 @@ scoresheet = {
 
 class GameLogic():
 
-    # occurrences = {
-    #     2:2,
-    #     3:2,
-    #     4:2
-    # }
-
-    # print(occurrences)
-
-    # num_keys = len(occurrences)
-
-    # print(num_keys)
-
-    # if num_keys == 3:
-    #     values_list = list(occurrences.values())
-
-    #     if values_list[0] == 2 and values_list[1] == 2 and values_list[2] == 2:
-    #         print("good so far")
-
     @staticmethod
     def roll_dice(num_of_dice): # static method
         values = []
@@ -83,6 +65,10 @@ class GameLogic():
                 if keepers.count(num) > roll.count(int(num)):
                     return False
         return True
+
+    @staticmethod
+    def get_scorers(scores):
+        pass
         
 
 
@@ -92,15 +78,15 @@ class Banker():
         self.banked = 0 # total
         self.shelved = 0
         
-    def shelf(self, num): # input of shelf is an integer and is the amount of points to add to self.shelf. Should temp. store unbanked points
+    def shelf(self, num):
         self.shelved += num
 
-    def bank(self): # instance method
+    def bank(self):
         temp_total = self.shelved
         self.banked += temp_total
         self.shelved = 0
         return temp_total
 
-    def clear_shelf(self): # instance method
+    def clear_shelf(self):
         self.shelved = 0
 
