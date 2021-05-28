@@ -84,8 +84,8 @@ class Game():
                 dice_values = tuple(int(char) for char in user_response)
                 score = GameLogic.calculate_score(dice_values)
                 self.banker.shelf(score)
-                # num_of_dice -= len(user_response)
-                print(f"You have {self.banker.shelved} unbanked points and 2 dice remaining")
+                num_of_dice -= len(user_response)
+                print(f"You have {self.banker.shelved} unbanked points and {num_of_dice} dice remaining")
                 print("(r)oll again, (b)ank your points or (q)uit:") 
                 user_response = input("> ")
 
@@ -100,8 +100,8 @@ class Game():
 
                 #self.round_num += 1
 
-                print(f"You banked {self.banker.shelved} points in round {self.round_num}")
-                print(f"Total score is {self.banker.bank()} points")
+                print(f"You banked {self.banker.bank()} points in round {self.round_num}")
+                print(f"Total score is {self.banker.banked} points")
                 break
 
 
