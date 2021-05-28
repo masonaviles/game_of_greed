@@ -23,20 +23,15 @@ class Game():
             self.start_game()
 
     def start_game(self):
-        num_of_dice = 6
-        # self.round_num = 1
-        # self.round_num += 1
         while self.round_num <= self.num_of_rounds:
-            # self.round_num += 1
             self.start_round()
-            # print(f"Thanks for playing. You earned {self.banker.banked} points")
         self.end_game()
 
     def end_game(self):
         print(f"Thanks for playing. You earned {self.banker.banked} points")
         sys.exit()
 
-    def roll_dice(self, num_dice):
+    def roll_dice(self, num_dice): ## WE HAVE THIS ALSO IN GAMELOGIC, RE-NAME
         print(f"Rolling {num_dice} dice...")
         dice_roll = self.roller(num_dice)
         dice_string = " ".join([str(i) for i in dice_roll])
@@ -54,72 +49,39 @@ class Game():
             converted_keepers = self.convert_keepers(user_response)
         return converted_keepers
     
-    # user input string (user_keepers) to int so we can score it 
-    # list comprehension, for each number in the user_keepers how do you change int(blah)
     def convert_keepers(self, users_keepers):
         users_keepers_list = [int(num) for num in users_keepers if num.isdigit()]
         return users_keepers_list
 
-
-    # start_round(num_of_dice=(int))
     def start_round(self, num_of_dice=6):
         self.round_num += 1
         print(f"Starting round {self.round_num}")
         
         while True:
             self.roll_dice(num_of_dice) # -> return dice
-            # how are we gonna handle keepers
             print("Enter dice to keep, or (q)uit:")
             user_response = input("> ")
 
             if user_response == "q":
                 self.end_game()
 
-            # this is for keeping dice
-            # 5 5 1 2 3 4
-            # ex-> > 551
-            # -> take the length of user imput and subtract that from number of dice -> remain dice
             if user_response.isnumeric():
-                #use calculate score in GameLogic(). this function ist expecting dice
                 dice_values = tuple(int(char) for char in user_response)
                 score = GameLogic.calculate_score(dice_values)
                 self.banker.shelf(score)
-                # num_of_dice -= len(user_response)
-                print(f"You have {self.banker.shelved} unbanked points and 2 dice remaining")
+                num_of_dice -= len(user_response)
+                print(f"You have {self.banker.shelved} unbanked points and {num_of_dice} dice remaining")
                 print("(r)oll again, (b)ank your points or (q)uit:") 
                 user_response = input("> ")
 
-            # bank
             if user_response == "b":
-                # add to next round when after while
-
-                # dice_values = tuple(int(char) for char in user_response)
-                # score = GameLogic.calculate_score(dice_values)
-                # self.banker.shelf(score)
-                # num_of_dice -= len(user_response)
-
-                #self.round_num += 1
-
-                print(f"You banked {self.banker.shelved} points in round {self.round_num}")
-                print(f"Total score is {self.banker.bank()} points")
+                print(f"You banked {self.banker.bank()} points in round {self.round_num}")
+                print(f"Total score is {self.banker.banked} points")
+                self.banker.clear_shelf()
                 break
-
 
             if user_response == "q":
                 self.end_game()
-
-
-            # if user_response.isnumeric():
-            #     self.round_num += 1
-            #     #use calculate score in GameLogic(). this function ist expecting dice
-            #     dice_values = tuple(int(char) for char in user_response)
-            #     score = GameLogic.calculate_score(dice_values)
-            #     self.banker.shelf(score)
-            #     # num_of_dice -= len(user_response)
-            #     print(f"You have {self.banker.bank()} unbanked points and {num_of_dice} dice remaining")
-            #     print("(r)oll again, (b)ank your points or (q)uit:") 
-            #     user_response = input("> ")
-
 
 
 
