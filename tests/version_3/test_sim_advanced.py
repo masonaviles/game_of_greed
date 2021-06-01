@@ -12,7 +12,7 @@ def test_repeat_roller():
     diffs = diff(Game().play, path="tests/version_3/repeat_roller.sim.txt")
     assert not diffs, diffs
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_hot_dice():
     """When all dice are used without a zilch
     then user gets 6 fresh dice and continues turn.
@@ -20,7 +20,7 @@ def test_hot_dice():
     diffs = diff(Game().play, path="tests/version_3/hot_dice.sim.txt")
     assert not diffs, diffs
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_cheat_and_fix():
     """Cheating (or typos) should not be allowed.
     Therefore the user's input must be validated

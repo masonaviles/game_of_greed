@@ -67,9 +67,29 @@ class GameLogic():
         return True
 
     @staticmethod
-    def get_scorers(scores):
-        pass
-        
+    def get_scorers(dice):
+        occurrences = {}
+        scoring_dice = []
+
+        for num in dice:
+            times_rolled = dice.count(num)
+            occurrences[num] = times_rolled
+
+        for num in occurrences:
+            if scoresheet[str(num)][str(occurrences[num])]:
+                scoring_dice.append(num)
+
+        keys = list(occurrences.keys())
+        if isinstance(keys, list):
+            if len(keys) == 3:
+                if (occurrences[keys[0]] == 2) and (occurrences[keys[1]] == 2) and (occurrences[keys[2]] == 2):
+                    return "three pair"
+
+        if (isinstance(keys, int)) and (occurrences[keys[1]] == 2) and (occurrences[keys[2]] == 6):
+            return "six of a kind"                  
+
+            
+            
 
 
 class Banker():
