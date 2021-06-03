@@ -44,12 +44,12 @@ class Game():
     def gather_keepers(self, roll, users_keepers):
         while not GameLogic.validate_keepers(roll, users_keepers):
             print("Cheater!!! Or possibly made a typo...")
+            roll_text = " ".join([str(i) for i in roll])
+            print(f"*** {roll_text} ***")
             print("Enter dice to keep, or (q)uit:")
             user_response = input("> ")
-            if user_response.isnumeric():
-                self.start_round()
-            converted_keepers = self.convert_keepers(user_response)
-        return converted_keepers
+            users_keepers = self.convert_keepers(user_response)
+        return users_keepers
     
     def convert_keepers(self, users_keepers):
         users_keepers_list = [int(num) for num in users_keepers if num.isdigit()]
@@ -59,9 +59,13 @@ class Game():
         print(f"Starting round {self.round_num}")
         playing = True
         while playing and num_of_dice >= 0:
-            self.roll_dice(num_of_dice)
+            dice_roll = self.roll_dice(num_of_dice)
             print("Enter dice to keep, or (q)uit:")
             user_response = input("> ")
+            user_response = user_response.replace(" ", "")
+            user_ans = self.convert_keepers(user_response)
+            self.gather_keepers(dice_roll, user_ans)
+
 
             if user_response.isnumeric():
                 dice_values = tuple(int(char) for char in user_response)
